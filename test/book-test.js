@@ -75,7 +75,7 @@ describe("book.js", function () {
       assert.equal(reviews.length, 3);
       assert.deepEqual(reviews, ["You won't be able to put it down", "A page turner!", "An instant classic!"]);
     });
-// Current working area:
+
     it("should only add unique reviews", function() {
       var reviews = [];
 
@@ -113,7 +113,7 @@ describe("book.js", function () {
       assert.isFunction(writeBook);
     });
 
-    it.skip("should return a book object", function () {
+    it("should return a book object", function () {
       var bookTitle = createTitle("Teenage Ghoul");
       var bookCharacter = buildMainCharacter("Vassya", 16, "she/her");
       var book = writeBook(bookTitle, bookCharacter, "fantasy");
@@ -124,7 +124,7 @@ describe("book.js", function () {
       assert.equal(book.genre, "fantasy");
     });
 
-    it.skip("should return a different book object", function () {
+    it("should return a different book object", function () {
       var dragonTitle = createTitle("Dragon in the Summer");
       var dragonCharacter = buildMainCharacter("Dana", 25, "they/them");
       var dragonBook = writeBook(dragonTitle, dragonCharacter, "fantasy");
@@ -135,13 +135,13 @@ describe("book.js", function () {
       assert.equal(dragonBook.genre, "fantasy");
     });
   });
-
+// Current working area:
   describe("editBook", function() {
-    it.skip("should be a function", function () {
+    it("should be a function", function () {
       assert.isFunction(editBook);
     });
 
-    it.skip("should decrease the book's page count to be three quarters of what it originally was", function () {
+    it("should decrease the book's page count to be three quarters of what it originally was", function () {
       var ghoulTitle = createTitle("Teenage Ghoul");
       var ghoulCharacter = buildMainCharacter("Vassya", 16, "she/her");
       var ghoulBook = writeBook(ghoulTitle, ghoulCharacter, "mystery");
@@ -154,7 +154,7 @@ describe("book.js", function () {
     });
 
 
-    it.skip("should decrease a different book's page count to be three quarters of what it originally was", function () {
+    it("should decrease a different book's page count to be three quarters of what it originally was", function () {
       var dragonTitle = createTitle("Dragon in the Summer");
       var dragonCharacter = buildMainCharacter("Dana", 25, "they/them");
       var dragonBook = writeBook(dragonTitle, dragonCharacter, "fantasy");

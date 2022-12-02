@@ -23,10 +23,18 @@ function listTitles(shelf){
   return listedShelf;
 }
 
-function searchShelf
+function searchShelf (shelf, name){
+  itsThere = false;
+  for (var i = 0; i < shelf.length; i++) {
+    if (shelf[i].title === name) {
+      itsThere = true;
+    }
+  }
+  return itsThere;
+  }
 module.exports = {
   shelfBook,
   unshelfBook,
   listTitles,
-  // searchShelf
-};
+  searchShelf
+}

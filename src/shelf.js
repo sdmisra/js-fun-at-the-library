@@ -12,14 +12,21 @@ function unshelfBook(name, shelf) {
   }
 }
 }
+function listTitles(shelf){
+  var listedShelf = "";
+  for (var i = 0; i < shelf.length; i++) {
+  if (i === shelf.length-1) {
+  listedShelf += shelf[i].title
+  } else {
+  listedShelf += shelf[i].title + ", "}
+  }
+  return listedShelf;
+}
 
-//  for (var i = 0; i < shelf.length; i++) {
-//  if (name === shelf['title']) {
-//   shelf[i].splice(0, 1)}
-
+function searchShelf
 module.exports = {
   shelfBook,
   unshelfBook,
-  // listTitles,
+  listTitles,
   // searchShelf
 };

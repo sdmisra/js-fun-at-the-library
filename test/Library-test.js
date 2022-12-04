@@ -78,7 +78,7 @@ describe("library.js", function() {
   });
 // Current working area:
   describe("checkoutBook", function() {
-    it.skip("should unshelf a book to check out a book to a patron", function() {
+    it("should unshelf a book to check out a book to a patron", function() {
       var dracula = {
         title: "Dracula",
         mainCharacter: { name: "Count Dracula", age: undefined, pronouns: "he/him" },

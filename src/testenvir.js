@@ -86,28 +86,16 @@ function addBook(library, book) {
 return book
 }
 // Need to match genre, loop through genre array, match title of book, splice at location of book within genre array, return success or fail message.
-function checkoutBook (library, book, shelf) {
-  if (book.genre == 'fantasy') {
-    for (var i = 0; i < shelf.length; i++) {
-      if (book.title == library.shelves.fantasy[i].title){
-        library.shelves.fantasy[i].splice(i, 1)
-        return `"You have now checked out ${library.shelves.fantasy[i].title} from the Denver Public Library"`
-      }
+function checkoutBook (library, book, genre) {
+  console.log('log 1', library.shelves[genre]);
+  for (var i = 0; i < library.shelves[genre].length; i++) {
+    console.log('log 2', library.shelves[genre][i]['title'])
+    if (library.shelves[genre][i]['title'] == book) {
+      library.shelves[genre].splice(i);
+      return `"You have now checked out ${book} from the Denver Public Library"`
     }
-}
-  else if (book.genre == 'fiction') {
-      for (var i = 0; i < shelf.length; i++) {if (book.title == library.shelves.fiction[i].title){
-        library.shelves.fiction[i].splice(i, 1)
-        return `"You have now checked out ${library.shelves.fiction[i].title} from the Denver Public Library"`}
-    }
-}
-  else if (book.genre == 'nonFiction') {
-      for (var i = 0; i < shelf.length; i++) {if (book.title == library.shelves.nonFiction[i].title){
-        library.shelves.fantasy[i].splice(i, 1)
-        return `"You have now checked out ${library.shelves.nonFiction[i].title} from the Denver Public Library"`}
-        }
-    }
-  else return `"Sorry, there are currently no copies of ${book.title} available at the ${library}"`
+  }
+  return `"Sorry, there are currently no copies of ${book} available at the Denver Public Library"`
 }
 
 var denverLibrary = createLibrary("Denver Public Library");
@@ -115,14 +103,21 @@ var denverLibrary = createLibrary("Denver Public Library");
 addBook(denverLibrary, dracula);
 addBook(denverLibrary, bornACrime);
 addBook(denverLibrary, prideAndPrejudice);
-console.log(dracula, bornACrime, prideAndPrejudice);
-console.log(denverLibrary);
-console.log(denverLibrary.shelves.nonFiction[0].title);
+checkoutBook(denverLibrary, "Pride and Prejudice", "fiction");
 // var result1 = checkoutBook(denverLibrary, "Pride and Prejudice", "fiction");
 // var result2 = checkoutBook(denverLibrary, "Born a Crime", "nonFiction");
 // console.log(result1);
 // console.log(result2);
-checkoutBook(denverLibrary, "Pride and Prejudice", "fiction");
-checkoutBook(denverLibrary, "Born a Crime", "nonFiction");
-
-console.log(denverLibrary);
+// var error1 = checkoutBook(denverLibrary, "The Fifth Season", "fantasy");
+// var error2 = checkoutBook(denverLibrary, "Yes Please", "nonFiction");
+// console.log(error1);
+// console.log(error2);
+// // checkoutBook(denverLibrary, "Born a Crime", "nonFiction");
+// console.log('line 102', dracula, bornACrime, prideAndPrejudice);
+// console.log('line 103', denverLibrary);
+// console.log('line 104', denverLibrary.shelves['fantasy'])
+// console.log('line 105', denverLibrary.shelves.fantasy[0].title);
+console.log('log 3', denverLibrary.shelves)
+assert.deepEqual(denverLibrary.shelves, {fantasy: [dracula], fiction: [], nonFiction: [bornACrime]});
+// console.log('line 120', denverLibrary.shelves['fantasy'].splice(0));
+// console.log('line 121: after splice', denverLibrary.shelves.fantasy);

@@ -17,29 +17,15 @@ function addBook(library, book) {
     }
 return book
 }
-function checkoutBook (library, book, shelf) {
-  if (book.genre == 'fantasy') {
-    for (var i = 0; i < shelf.length; i++) {
-      if (book.title == library.shelves.fantasy[i].title){
-        library.shelves.fantasy[i].splice(i, 1)
-        return `"You have now checked out ${library.shelves.fantasy[i].title} from the Denver Public Library"`
-      }
+function checkoutBook (library, book, genre) {
+  for (var i = 0; i < library.shelves[genre].length; i++) {
+    if (library.shelves[genre][i]['title'] == book) {
+      library.shelves[genre].splice(i);
+      return `You have now checked out ${book} from the Denver Public Library`
     }
+  }
+  return `Sorry, there are currently no copies of ${book} available at the Denver Public Library`
 }
-  if (book.genre == 'fiction') {
-      for (var i = 0; i < shelf.length; i++) {if (book.title == library.shelves.fiction[i].title){
-        library.shelves.fiction[i].splice(i, 1)
-        return `"You have now checked out ${library.shelves.fiction[i].title} from the Denver Public Library"`}
-    }
-}
-  if (book.genre == 'nonFiction') {
-      for (var i = 0; i < shelf.length; i++) {if (book.title == library.shelves.nonFiction[i].title){
-        library.shelves.fantasy[i].splice(i, 1)
-        return `"You have now checked out ${library.shelves.nonFiction[i].title} from the Denver Public Library"`}
-        }
-    }
-}
-// var result1 = checkoutBook(denverLibrary, "Pride and Prejudice", "fiction");
 
 module.exports = {
   createLibrary,
